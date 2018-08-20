@@ -1,34 +1,26 @@
 import React, { Component } from 'react';
-import {  Text, View } from 'react-native';
+import {  StyleSheet, Text, View } from 'react-native';
 
-class Blink extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {isShowText: true};
-
-        //Toggle the state every second
-        setInterval(() => {
-            this.setState(previousState => {
-            return {isShowText: !previousState.isShowText};
-        });
-        }, 1000);
-    }
-    render() {
-        let display = this.state.isShowText ? this.props.Text : '';
-        return (
-            <Text>{display}</Text>
-            );
-    }
-}
-
-export default class App extends Component {
+export default class LotsOfStyles extends Component {
     render() {
         return (
             <View>
-                <Blink Text="I love to blink"/>
-                <Blink Text="Jack"/>
-                <Blink Text="Josh"/>
-            </View>
+                <Text style={styles.red}>just red</Text>
+                <Text style={styles.bigblue}>just big blue</Text>
+                <Text style={[styles.bigblue, styles.red]}>bigblue, then red</Text>
+                <Text style={[styles.red, styles.bigblue]}>red, then bigblue</Text>
+                </View>
             );
     }
 }
+const styles = StyleSheet.create({
+    bigblue: {
+        color: 'blue',
+        fontWeight: 'bold',
+        fontSize: 30
+        },
+    red: {
+        color: 'red'
+    },
+
+});
